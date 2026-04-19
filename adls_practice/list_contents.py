@@ -23,7 +23,8 @@ def main():
         #blob is a BlobProperties element 
         #the name of the blob is a string so can just python str function, endswith()
 
-        #do i need to actually modify the list or can i just filter it out 
+        #do i need to actually modify the list or can i just filter it out?
+        #Filtering algorithm implementation: check if the string name endswith "csv.gz"
         if blob.name.endswith(".csv.gz"):
           print(blob.name)
 
