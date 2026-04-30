@@ -18,7 +18,25 @@ def main():
     #the list is container_client.list_blobs()
     
 
+    #
+    ## Exercise 3 — Count and Size Summary
+
+    # Modify `list_contents.py` so that after printing the `.csv.gz` filenames, it also prints a summary line with
+    # the **total file count** and **combined size in bytes**.
+
+    # Expected output (values will differ):
+    # ```
+    # AzurePublicDatasetV2/trace1.csv.gz
+    # AzurePublicDatasetV2/trace2.csv.gz
+    # ...
+    # ---
+    # Total: 42 file(s), 8,301,204,512 bytes
+    # ```
+
     print(f"Listing files in container: {container_name}")
+
+    total_size = 0 
+    total_file_count = 0
     for blob in container_client.list_blobs():
         #blob is a BlobProperties element 
         #the name of the blob is a string so can just python str function, endswith()
@@ -27,6 +45,10 @@ def main():
         #Filtering algorithm implementation: check if the string name endswith "csv.gz"
         if blob.name.endswith(".csv.gz"):
           print(blob.name)
+          total_size+=blob.size
+          total_file_count+=1
+    
+    print(f"Total file count is {total_file_count} and total combined size in bytes is {total_size}")
 
 if __name__ == "__main__":
     main()
