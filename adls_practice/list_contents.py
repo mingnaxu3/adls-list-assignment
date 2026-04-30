@@ -45,6 +45,7 @@ def main():
         #Filtering algorithm implementation: check if the string name endswith "csv.gz"
         if blob.name.endswith(".csv.gz"):
           print(blob.name)
+          print(blob.size)
           total_size+=blob.size
           total_file_count+=1
     
